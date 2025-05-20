@@ -1,0 +1,15 @@
+%%--------------------------------------------------------------------
+%% Copyright (c) <%= @current_year %> EMQ Technologies Co., Ltd. All Rights Reserved.
+%%--------------------------------------------------------------------
+
+-ifndef(__EMQX_BRIDGE_<%= @name |> String.upcase() %>_HRL__).
+-define(__EMQX_BRIDGE_<%= @name |> String.upcase() %>_HRL__, true).
+
+-define(CONNECTOR_TYPE, <%= @name %>).
+-define(CONNECTOR_TYPE_BIN, <<"<%= @name %>">>).
+
+-define(ACTION_TYPE, <%= @name %>).
+-define(ACTION_TYPE_BIN, <<"<%= @name %>">>).
+
+%% END ifndef(__EMQX_BRIDGE_<%= @name |> String.upcase() %>_HRL__)
+-endif.

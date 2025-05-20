@@ -1,0 +1,15 @@
+{application, emqx_bridge_<%= @name %>, [
+    {description, "EMQX Enterprise <%= @pretty_name %> Bridge"},
+    {vsn, "1.0.0"},
+    {registered, []},
+    {mod, {emqx_bridge_<%= @name %>_app, []}},
+    {applications, [
+        kernel,
+        stdlib,
+        emqx_resource
+    ]},
+    {env, []},
+    {modules, []},
+
+    {links, []}
+]}.
