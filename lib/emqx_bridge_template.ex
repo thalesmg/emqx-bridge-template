@@ -39,11 +39,17 @@ defmodule EmqxBridgeTemplate do
   end
   def outfile(output_dir, filepath, name) do
     [dir, filename] = Path.split(filepath)
-    filename = if filename == "include.hrl" do
-      "emqx_bridge_#{name}.hrl"
-    else
-      "emqx_bridge_#{name}_#{filename}"
-    end
+    filename =
+      case filename do
+        "include.hrl" ->
+          "emqx_bridge_#{name}.hrl"
+
+        "app.src" ->
+          "emqx_bridge_#{name}.app.src"
+
+        _ ->
+          "emqx_bridge_#{name}_#{filename}"
+      end
     Path.join([output_dir, dir, filename])
   end
 end
