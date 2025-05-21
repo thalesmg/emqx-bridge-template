@@ -60,7 +60,10 @@ init_per_suite(TCConfig) ->
         #{work_dir => emqx_cth_suite:work_dir(TCConfig)}
     ),
     [
-        {apps, Apps}
+        {apps, Apps},
+        {proxy_host, ?PROXY_HOST},
+        {proxy_port, ?PROXY_PORT},
+        {proxy_name, ?PROXY_NAME}
         | TCConfig
     ].
 
