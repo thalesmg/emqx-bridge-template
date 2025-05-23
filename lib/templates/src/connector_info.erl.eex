@@ -6,6 +6,7 @@
 -behaviour(emqx_connector_info).
 
 -include("emqx_bridge_<%= @name %>.hrl").
+-include_lib("hocon/include/hoconsc.hrl").
 
 %% `emqx_connector_info' API
 -export([
@@ -54,7 +55,7 @@ config_schema() ->
                 )
             ),
             #{
-                desc => <<"<%= @pretty_name %> Connector Config">>,
+                desc => ?DESC(emqx_bridge_<%= @name %>_connector_schema, "config_connector"),
                 required => false
             }
         )}.
