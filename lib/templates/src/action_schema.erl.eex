@@ -68,7 +68,7 @@ fields(?ACTION_TYPE) ->
 fields(action_parameters) ->
     [
         %% TODO
-        {todo, mk(todo, #{})}
+        {todo, mk(todo, #{default => todo})}
     ].
 
 desc(Name) when
