@@ -110,6 +110,9 @@ connector_config() ->
 
 connector_config(Overrides) ->
     Defaults = #{
+        <<"enable">> => true,
+        <<"description">> => <<"my connector">>,
+        <<"tags">> => [<<"some">>, <<"tags">>],
         <<"resource_opts">> =>
             emqx_bridge_v2_testlib:common_connector_resource_opts()
     },
@@ -118,6 +121,9 @@ connector_config(Overrides) ->
 
 action_config(Overrides) ->
     Defaults = #{
+        <<"enable">> => true,
+        <<"description">> => <<"my connector">>,
+        <<"tags">> => [<<"some">>, <<"tags">>],
         <<"parameters">> => #{
         },
         <<"resource_opts">> =>
