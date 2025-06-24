@@ -49,7 +49,7 @@ fields(Field) when
 fields(action) ->
     {?ACTION_TYPE,
         mk(
-            hoconsc:map(name, hoconsc:ref(?MODULE, ?ACTION_TYPE)),
+            hoconsc:map(name, ref(?ACTION_TYPE)),
             #{
                 desc => <<"<%= @pretty_name %> Action Config">>,
                 required => false
@@ -58,7 +58,7 @@ fields(action) ->
 fields(?ACTION_TYPE) ->
     emqx_bridge_v2_schema:make_producer_action_schema(
         mk(
-            hoconsc:ref(?MODULE, action_parameters),
+            ref(action_parameters),
             #{
                 required => true,
                 desc => ?DESC("parameters")
