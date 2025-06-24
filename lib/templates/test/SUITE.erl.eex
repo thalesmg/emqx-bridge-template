@@ -122,7 +122,7 @@ connector_config(Overrides) ->
 action_config(Overrides) ->
     Defaults = #{
         <<"enable">> => true,
-        <<"description">> => <<"my connector">>,
+        <<"description">> => <<"my action">>,
         <<"tags">> => [<<"some">>, <<"tags">>],
         <<"parameters">> => #{
         },
@@ -162,3 +162,15 @@ with_failure(FailureType, Fn) ->
 
 t_start_stop(Config) when is_list(Config) ->
     emqx_bridge_v2_testlib:t_start_stop(Config, "<%= @name %>_connector_stop").
+
+t_on_get_status(Config) when is_list(Config) ->
+    emqx_bridge_v2_testlib:t_on_get_status(Config).
+
+t_rule_action(Config) when is_list(Config) ->
+    PostPublishFn = fun(Context) ->
+        ct:fail(todo)
+    end,
+    Opts = #{
+        post_publish_fn => PostPublishFn
+    },
+    emqx_bridge_v2_testlib:t_rule_action(Config, Opts).
