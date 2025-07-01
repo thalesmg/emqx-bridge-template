@@ -8,7 +8,10 @@
         stdlib,
         emqx_resource
     ]},
-    {env, []},
+    {env, [
+        {emqx_action_info_modules, [emqx_bridge_<%= @name %>_action_info]},
+        {emqx_connector_info_modules, [emqx_bridge_<%= @name %>_connector_info]}
+    ]},
     {modules, []},
 
     {links, []}
