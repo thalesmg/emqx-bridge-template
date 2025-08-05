@@ -27,9 +27,10 @@ defmodule Mix.Tasks.Emqx.Bridge.New do
       strict: [
         output_dir: :string,
         name: :string,
-        pretty_name: :string,
+        pretty_name: :string
       ]
     ]
+
     {opts, []} = OptionParser.parse!(args, spec)
     opts[:name] || raise "--name is required"
     opts[:pretty_name] || raise "--pretty-name is required"
