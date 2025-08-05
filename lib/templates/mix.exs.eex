@@ -33,6 +33,7 @@ defmodule EMQXBridge<%= @name |> Macro.camelize() %>.MixProject do
 
   def deps() do
     [
+      {:emqx_gen_bridge, in_umbrella: true},
       {:emqx_resource, in_umbrella: true},
     ]
   end
