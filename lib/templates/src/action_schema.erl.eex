@@ -1,7 +1,6 @@
 %%--------------------------------------------------------------------
 %% Copyright (c) <%= @current_year %> EMQ Technologies Co., Ltd. All Rights Reserved.
 %%--------------------------------------------------------------------
-
 -module(emqx_bridge_<%= @name %>_action_schema).
 
 -behaviour(hocon_schema).
