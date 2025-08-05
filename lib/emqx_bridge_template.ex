@@ -34,18 +34,12 @@ defmodule EmqxBridgeTemplate do
   def outfile(output_dir, "mix.exs", _name) do
     Path.join([output_dir, "mix.exs"])
   end
-  def outfile(output_dir, "rebar.config", _name) do
-    Path.join([output_dir, "rebar.config"])
-  end
   def outfile(output_dir, filepath, name) do
     [dir, filename] = Path.split(filepath)
     filename =
       case filename do
         "include.hrl" ->
           "emqx_bridge_#{name}.hrl"
-
-        "app.src" ->
-          "emqx_bridge_#{name}.app.src"
 
         _ ->
           "emqx_bridge_#{name}_#{filename}"
