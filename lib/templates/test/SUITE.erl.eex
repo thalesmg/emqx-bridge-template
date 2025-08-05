@@ -3,8 +3,6 @@
 %%--------------------------------------------------------------------
 -module(emqx_bridge_<%= @name %>_SUITE).
 
--feature(maybe_expr, enable).
-
 -compile(nowarn_export_all).
 -compile(export_all).
 

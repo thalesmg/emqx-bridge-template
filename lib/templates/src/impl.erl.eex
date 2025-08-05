@@ -3,8 +3,6 @@
 %%--------------------------------------------------------------------
 -module(emqx_bridge_<%= @name %>_impl).
 
--feature(maybe_expr, enable).
-
 -behaviour(emqx_resource).
 
 -include_lib("emqx/include/logger.hrl").
