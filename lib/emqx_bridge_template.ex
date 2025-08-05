@@ -40,7 +40,8 @@ defmodule EmqxBridgeTemplate do
         "  - Update `apps/emqx_machine/priv/reboot_lists.eterm`\n",
         "  - Update `apps/emqx_gen_bridge/src/emqx_connector_info.erl`\n",
         "  - Update `apps/emqx_gen_bridge/src/emqx_action_info.erl`\n",
-        "  - Create corresponding `*.hocon` files in `rel/i18n/`\n"
+        "  - Create corresponding `*.hocon` files in `rel/i18n/`\n",
+        "  - Use `UMP.strict_erlc_opts` when done\n",
       ]
     ])
   end
