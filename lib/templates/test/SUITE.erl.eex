@@ -30,21 +30,10 @@
 %%------------------------------------------------------------------------------
 
 all() ->
-    All0 = emqx_common_test_helpers:all(?MODULE),
-    All = All0 -- matrix_cases(),
-    Groups = lists:map(fun({G, _, _}) -> {group, G} end, groups()),
-    Groups ++ All.
-
-matrix_cases() ->
-    lists:filter(
-        fun(TestCase) ->
-            get_tc_prop(TestCase, matrix, false)
-        end,
-        emqx_common_test_helpers:all(?MODULE)
-    ).
+    emqx_common_test_helpers:all_with_matrix(?MODULE).
 
 groups() ->
-    emqx_common_test_helpers:matrix_to_groups(?MODULE, matrix_cases()).
+    emqx_common_test_helpers:groups_with_matrix(?MODULE).
 
 init_per_suite(TCConfig) ->
     Apps = emqx_cth_suite:start(
