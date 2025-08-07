@@ -64,7 +64,7 @@ end_per_suite(Config) ->
 init_per_testcase(TestCase, TCConfig) ->
     reset_proxy(),
     Path = group_path(TCConfig, no_groups),
-    ct:print(asciiart:visible($%, "~p - ~s", [Path, TestCase])),
+    ct:pal(asciiart:visible($%, "~p - ~s", [Path, TestCase])),
     ConnectorName = atom_to_binary(TestCase),
     ConnectorConfig = connector_config(),
     ActionName = ConnectorName,
