@@ -13,11 +13,11 @@
 -include("../src/emqx_bridge_<%= @name %>.hrl").
 -include_lib("emqx_resource/include/emqx_resource.hrl").
 
--import(emqx_common_test_helpers, [on_exit/1]).
-
 %%------------------------------------------------------------------------------
 %% Defs
 %%------------------------------------------------------------------------------
+
+-import(emqx_common_test_helpers, [on_exit/1]).
 
 -define(PROXY_NAME, "<%= @name %>").
 -define(PROXY_HOST, "toxiproxy").
