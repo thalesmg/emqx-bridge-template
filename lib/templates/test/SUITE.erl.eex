@@ -66,7 +66,7 @@ init_per_testcase(TestCase, TCConfig) ->
     Path = group_path(TCConfig, no_groups),
     ct:pal(asciiart:visible($%, "~p - ~s", [Path, TestCase])),
     ConnectorName = atom_to_binary(TestCase),
-    ConnectorConfig = connector_config(),
+    ConnectorConfig = connector_config(#{}),
     ActionName = ConnectorName,
     ActionConfig = action_config(#{
         <<"connector">> => ConnectorName
@@ -94,9 +94,6 @@ end_per_testcase(_TestCase, _TCConfig) ->
 %% Helper fns
 %%------------------------------------------------------------------------------
 
-connector_config() ->
-    connector_config(_Overrides = #{}).
-
 connector_config(Overrides) ->
     Defaults = #{
         <<"enable">> => true,
@@ -122,6 +119,7 @@ action_config(Overrides) ->
     emqx_bridge_v2_testlib:parse_and_check(action, ?ACTION_TYPE_BIN, <<"x">>, InnerConfigMap).
 
 get_config(K, TCConfig) -> emqx_bridge_v2_testlib:get_value(K, TCConfig).
+get_config(K, TCConfig, Default) -> proplists:get_value(K, TCConfig, Default).
 
 group_path(Config, Default) ->
     case emqx_common_test_helpers:group_path(Config) of
