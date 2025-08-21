@@ -55,8 +55,8 @@ init_per_suite(TCConfig) ->
         | TCConfig
     ].
 
-end_per_suite(Config) ->
-    Apps = ?config(apps, Config),
+end_per_suite(TCConfig) ->
+    Apps = ?config(apps, TCConfig),
     emqx_cth_suite:stop(Apps),
     reset_proxy(),
     ok.
@@ -121,8 +121,8 @@ action_config(Overrides) ->
 get_config(K, TCConfig) -> emqx_bridge_v2_testlib:get_value(K, TCConfig).
 get_config(K, TCConfig, Default) -> proplists:get_value(K, TCConfig, Default).
 
-group_path(Config, Default) ->
-    case emqx_common_test_helpers:group_path(Config) of
+group_path(TCConfig, Default) ->
+    case emqx_common_test_helpers:group_path(TCConfig) of
         [] -> Default;
         Path -> Path
     end.
@@ -142,31 +142,31 @@ reset_proxy() ->
 with_failure(FailureType, Fn) ->
     emqx_common_test_helpers:with_failure(FailureType, ?PROXY_NAME, ?PROXY_HOST, ?PROXY_PORT, Fn).
 
-create_connector_api(Config, Overrides) ->
+create_connector_api(TCConfig, Overrides) ->
     emqx_bridge_v2_testlib:simplify_result(
-        emqx_bridge_v2_testlib:create_connector_api(Config, Overrides)
+        emqx_bridge_v2_testlib:create_connector_api(TCConfig, Overrides)
     ).
 
-create_action_api(Config, Overrides) ->
+create_action_api(TCConfig, Overrides) ->
     emqx_bridge_v2_testlib:simplify_result(
-        emqx_bridge_v2_testlib:create_action_api(Config, Overrides)
+        emqx_bridge_v2_testlib:create_action_api(TCConfig, Overrides)
     ).
 
 %%------------------------------------------------------------------------------
 %% Test cases
 %%------------------------------------------------------------------------------
 
-t_start_stop(Config) when is_list(Config) ->
-    emqx_bridge_v2_testlib:t_start_stop(Config, "<%= @name %>_connector_stop").
+t_start_stop(TCConfig) when is_list(TCConfig) ->
+    emqx_bridge_v2_testlib:t_start_stop(TCConfig, "<%= @name %>_connector_stop").
 
-t_on_get_status(Config) when is_list(Config) ->
-    emqx_bridge_v2_testlib:t_on_get_status(Config).
+t_on_get_status(TCConfig) when is_list(TCConfig) ->
+    emqx_bridge_v2_testlib:t_on_get_status(TCConfig).
 
-t_rule_action(Config) when is_list(Config) ->
+t_rule_action(TCConfig) when is_list(TCConfig) ->
     PostPublishFn = fun(Context) ->
         ct:fail(todo)
     end,
     Opts = #{
         post_publish_fn => PostPublishFn
     },
-    emqx_bridge_v2_testlib:t_rule_action(Config, Opts).
+    emqx_bridge_v2_testlib:t_rule_action(TCConfig, Opts).
