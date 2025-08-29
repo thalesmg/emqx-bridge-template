@@ -56,7 +56,7 @@ init_per_suite(TCConfig) ->
     ].
 
 end_per_suite(TCConfig) ->
-    Apps = ?config(apps, TCConfig),
+    Apps = get_config(apps, TCConfig),
     emqx_cth_suite:stop(Apps),
     reset_proxy(),
     ok.
