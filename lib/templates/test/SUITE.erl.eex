@@ -85,6 +85,7 @@ init_per_testcase(TestCase, TCConfig) ->
 
 end_per_testcase(_TestCase, _TCConfig) ->
     snabbkaffe:stop(),
+    reset_proxy(),
     emqx_bridge_v2_testlib:delete_all_rules(),
     emqx_bridge_v2_testlib:delete_all_bridges_and_connectors(),
     emqx_common_test_helpers:call_janitor(),
