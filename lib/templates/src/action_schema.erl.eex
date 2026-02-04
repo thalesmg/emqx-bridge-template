@@ -120,6 +120,7 @@ action_example(put) ->
         connector => <<"my_connector">>,
         parameters =>
             #{
+              %% TODO
             },
         resource_opts =>
             #{
