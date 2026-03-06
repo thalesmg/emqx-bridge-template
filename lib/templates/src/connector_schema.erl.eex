@@ -115,5 +115,5 @@ connector_example(put) ->
 %% Internal fns
 %%------------------------------------------------------------------------------
 
-mk(Type, Meta) -> hoconsc:mk(Type, Meta).
-ref(Struct) -> hoconsc:ref(?MODULE, Struct).
+%% mk(Type, Meta) -> hoconsc:mk(Type, Meta).
+%% ref(Struct) -> hoconsc:ref(?MODULE, Struct).
