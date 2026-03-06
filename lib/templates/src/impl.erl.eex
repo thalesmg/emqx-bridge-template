@@ -137,9 +137,9 @@ on_get_channel_status(_ConnResId, _ChanResId, _ConnState) ->
 -spec on_query(connector_resource_id(), query(), connector_state()) ->
     {ok, _Result} | {error, _Reason}.
 on_query(
-    ConnResId,
-    {ChanResId, #{} = Data},
-    #{?installed_channels := InstalledChannels} = ConnState
+    _ConnResId,
+    {ChanResId, #{} = _Data},
+    #{?installed_channels := InstalledChannels} = _ConnState
 ) when
     is_map_key(ChanResId, InstalledChannels)
 ->
@@ -155,10 +155,10 @@ on_query(_ConnResId, Query, _ConnState) ->
     connector_state()
 ) -> {ok, pid()} | {error, term()}.
 on_query_async(
-    ConnResId,
-    {ChanResId, #{} = Data},
-    ReplyFnAndArgs,
-    #{?installed_channels := InstalledChannels} = ConnState
+    _ConnResId,
+    {ChanResId, #{} = _Data},
+    _ReplyFnAndArgs,
+    #{?installed_channels := InstalledChannels} = _ConnState
 ) when
     is_map_key(ChanResId, InstalledChannels)
 ->
@@ -170,9 +170,9 @@ on_query_async(_ConnResId, Query, _ReplyFnAndArgs, _ConnState) ->
 -spec on_batch_query(connector_resource_id(), [query()], connector_state()) ->
     ok | {error, term()}.
 on_batch_query(
-    ConnResId,
-    [{ChanResId, _Data} | _] = Queries,
-    #{?installed_channels := InstalledChannels} = ConnState
+    _ConnResId,
+    [{ChanResId, _Data} | _] = _Queries,
+    #{?installed_channels := InstalledChannels} = _ConnState
 ) when
     is_map_key(ChanResId, InstalledChannels)
 ->
@@ -189,10 +189,10 @@ on_batch_query(_ConnResId, Queries, _ConnectorState) ->
 ) ->
     ok | {error, term()}.
 on_batch_query_async(
-    ConnResId,
-    [{ChanResId, _Data} | _] = Queries,
-    ReplyFnAndArgs,
-    #{?installed_channels := InstalledChannels} = ConnState
+    _ConnResId,
+    [{ChanResId, _Data} | _] = _Queries,
+    _ReplyFnAndArgs,
+    #{?installed_channels := InstalledChannels} = _ConnState
 ) when
     is_map_key(ChanResId, InstalledChannels)
 ->
