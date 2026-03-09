@@ -17,7 +17,7 @@
 %% Defs
 %%------------------------------------------------------------------------------
 
--import(emqx_common_test_helpers, [on_exit/1]).
+%% -import(emqx_common_test_helpers, [on_exit/1]).
 
 -define(PROXY_NAME, "<%= @name %>").
 -define(PROXY_HOST, "toxiproxy").
@@ -164,7 +164,7 @@ t_on_get_status(TCConfig) when is_list(TCConfig) ->
     emqx_bridge_v2_testlib:t_on_get_status(TCConfig).
 
 t_rule_action(TCConfig) when is_list(TCConfig) ->
-    PostPublishFn = fun(Context) ->
+    PostPublishFn = fun(_Context) ->
         ct:fail(todo)
     end,
     Opts = #{
