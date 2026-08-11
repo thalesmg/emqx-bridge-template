@@ -15,9 +15,12 @@ defmodule Mix.Tasks.Emqx.Bridge.New do
     * `--output-dir` - the path to EMQX `apps/emqx_bridge_$NAME` directory where the
       templates will be instantiated.
 
+    * `--i18n-out` - the path to EMQX root directory, so i18n files will be output to
+      `rel/i18n`.  Optional.
+
   ## Examples
 
-      $ mix emqx.bridge.new --name s3tables --pretty-name "S3 Tables" --output-dir /path/to/emqx/apps/emqx_bridge_s3tables
+      $ mix emqx.bridge.new --name s3tables --pretty-name "S3 Tables" --output-dir /path/to/emqx/apps/emqx_bridge_s3tables --i18n-out /path/to/emqx/root
 
   """
 
