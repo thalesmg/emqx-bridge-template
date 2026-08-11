@@ -1,0 +1,8 @@
+emqx_bridge_<%= @name %>_action_schema {
+  action_parameters {
+    label: """<%= @pretty_name %> Action Parameters"""
+    desc:
+    """Set of parameters for the action."""
+  }
+
+}

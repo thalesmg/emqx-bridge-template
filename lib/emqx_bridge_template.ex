@@ -26,6 +26,13 @@ defmodule EmqxBridgeTemplate do
     ]
 
     @templates
+    |> Enum.filter(fn
+      {"rel/i18n/" <> _, _} ->
+        !!opts[:i18n_out]
+
+      _ ->
+        true
+    end)
     |> Enum.each(fn {out_path, template_quoted} ->
       target = outfile(output_dir, out_path, name)
       {result, _} = Code.eval_quoted(template_quoted, assigns: assigns)
@@ -51,7 +58,8 @@ defmodule EmqxBridgeTemplate do
   end
 
   def outfile(output_dir, filepath, name) do
-    [dir, filename] = Path.split(filepath)
+    dir = Path.dirname(filepath)
+    filename = Path.basename(filepath)
 
     filename =
       case filename do

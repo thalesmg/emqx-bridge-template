@@ -27,7 +27,8 @@ defmodule Mix.Tasks.Emqx.Bridge.New do
       strict: [
         output_dir: :string,
         name: :string,
-        pretty_name: :string
+        pretty_name: :string,
+        i18n_out: :string
       ]
     ]
 
