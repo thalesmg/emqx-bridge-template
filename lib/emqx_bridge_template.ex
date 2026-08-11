@@ -34,7 +34,7 @@ defmodule EmqxBridgeTemplate do
         true
     end)
     |> Enum.each(fn {out_path, template_quoted} ->
-      target = outfile(output_dir, out_path, name)
+      target = outfile(output_dir, out_path, name, opts)
       {result, _} = Code.eval_quoted(template_quoted, assigns: assigns)
       Mix.Generator.create_file(target, result)
     end)
@@ -53,11 +53,11 @@ defmodule EmqxBridgeTemplate do
     ])
   end
 
-  def outfile(output_dir, "mix.exs", _name) do
+  def outfile(output_dir, "mix.exs", _name, _opts) do
     Path.join([output_dir, "mix.exs"])
   end
 
-  def outfile(output_dir, filepath, name) do
+  def outfile(output_dir, filepath, name, opts) do
     dir = Path.dirname(filepath)
     filename = Path.basename(filepath)
 
@@ -70,6 +70,10 @@ defmodule EmqxBridgeTemplate do
           "emqx_bridge_#{name}_#{filename}"
       end
 
-    Path.join([output_dir, dir, filename])
+    if String.ends_with?(filename, ".hocon") do
+      Path.join([opts[:i18n_out], dir, filename])
+    else
+      Path.join([output_dir, dir, filename])
+    end
   end
 end
