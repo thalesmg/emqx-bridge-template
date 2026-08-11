@@ -68,7 +68,7 @@ callback_mode() ->
 
 -spec on_start(connector_resource_id(), connector_config()) ->
     {ok, connector_state()} | {error, _Reason}.
-on_start(ConnResId, ConnConfig) ->
+on_start(_ConnResId, _ConnConfig) ->
     %% TODO
     ConnState = #{?installed_channels => #{}},
     {ok, ConnState}.
