@@ -49,13 +49,10 @@ config_schema() ->
         hoconsc:mk(
             hoconsc:map(
                 name,
-                hoconsc:ref(
-                    ?SCHEMA_MOD,
-                    "config_connector"
-                )
+                hoconsc:ref(?SCHEMA_MOD, "config_connector")
             ),
             #{
-                desc => ?DESC(emqx_bridge_<%= @name %>_connector_schema, "config_connector"),
+                desc => ?DESC(?SCHEMA_MOD, "config_connector"),
                 required => false
             }
         )}.
